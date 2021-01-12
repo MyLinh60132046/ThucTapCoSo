@@ -80,3 +80,46 @@ int Count(int n, Node *Open)
 	}
 	return count;
 }
+int Find(int n, Node *Open)
+{
+
+	for (int i = 0; i < n; i++)
+		if (Open[i].color == 1)
+			return i;
+    return -1;
+}
+
+int FindMin(int n, Node *Open)
+{
+	int minIndex = Find(n, Open);
+	int min = Open[minIndex].f;
+	for (int i = 0; i < n; i++)
+	{
+		if (Open[i].f < min && Open[i].color == 1)
+		{
+			minIndex = i;
+			min = Open[i].f;
+		}
+	}
+	return minIndex;
+}
+void Init(int n, int *b)
+{
+	for (int i = 0; i < n; i++)
+	{
+		p[i].index = i;
+		p[i].color = 0;
+		p[i].g = b[i];
+		p[i].parent = 0;
+		p[i].f = p[i].g;
+		p[i].h = 0;
+	}
+}
+
+int FindPoint(int n, Node *q, int o)
+{
+	for (int i = 0; i < n; i++)
+		if (q[i].index == o)
+			return  i;
+    return -1;
+}
