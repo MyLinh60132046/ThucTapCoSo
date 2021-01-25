@@ -59,9 +59,9 @@ void ReadInputFile2(int a[100][100], int &n, int &start, int &finsh)
 	fs2.close();
 }
 
-void RhowMatrix(int a[100][100], int n)
+void RhowMatrix(int a[100][100], int n) //hien thi mang 2 chieu
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) //int n la so muon hien thi
 	{
 		for (int j = 0; j < n; j++)
 		{
@@ -71,10 +71,10 @@ void RhowMatrix(int a[100][100], int n)
 	}
 }
 
-int Count(int n, Node *Open)
+int Count(int n, Node *Open) //bien dem trong Node
 {
-	int count = 0;
-	for (int i = 0; i < n; i++)
+	int count = 0; //bien dem do lan xh 1
+	for (int i = 0; i < n; i++)//chay n lan trong node co so =1 thì count tang
 	{
 		if (Open[i].color == 1)
 			count++;
@@ -82,24 +82,24 @@ int Count(int n, Node *Open)
 	return count;
 }
 
-int Find(int n, Node *Open)
+int Find(int n, Node *Open) //tim 1 so trong mang dang o vi tri nao
 {
 
 	for (int i = 0; i < n; i++)
-		if (Open[i].color == 1)
+		if (Open[i].color == 1) // so sanh tìm dinh di qua
 			return i;
     return -1;
 }
-
-int FindMin(int n, Node *Open)
+//ham find và finmin ket hop de tìm ra so co n?m trong mang k
+int FindMin(int n, Node *Open)//tim so nho nhat
 {
-	int minIndex = Find(n, Open);
+	int minIndex = Find(n, Open);//neu co
 	int min = Open[minIndex].f;
 	for (int i = 0; i < n; i++)
 	{
 		if (Open[i].f < min && Open[i].color == 1)
 		{
-			minIndex = i;
+			minIndex = i; //di qua 1 dinh
 			min = Open[i].f;
 		}
 	}
